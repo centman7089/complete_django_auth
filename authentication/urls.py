@@ -22,6 +22,8 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 # from rest_framework.permissions import IsAdminUser
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('accounts.urls')),
@@ -39,3 +41,5 @@ urlpatterns = [
     #     name='swagger-ui'
     # ),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
