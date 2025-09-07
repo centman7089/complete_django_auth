@@ -186,6 +186,7 @@ SITE_OTP_SECRET = config('SITE_OTP_SECRET')
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
+    "https://api-test-291i.onrender.com"
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
