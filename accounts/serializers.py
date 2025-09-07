@@ -760,3 +760,6 @@ class GetProfileSerializer(serializers.ModelSerializer):
         for field, value in data.items():
             data[field] = value if value is not None else ""
         return data
+
+class LogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField()

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Resend OTP{% endblock %}
+{% block content %}
+<div class="form-container">
+    <h2>Resend OTP</h2>
+    <form id="resendOTPForm">
+        <input type="email" name="email" placeholder="Email" required>
+        <select name="purpose">
+            <option value="verification">Email Verification</option>
+            <option value="password_reset">Password Reset</option>
+        </select>
+        <button type="submit">Resend OTP</button>
+    </form>
+    <div id="resendOTPMessage"></div>
+</div>
+{% endblock %}

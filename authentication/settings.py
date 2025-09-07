@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'accounts',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 # -------------------------------
@@ -146,14 +147,18 @@ USE_I18N = True
 USE_TZ = True
 
 # -------------------------------
-# Static & Media
-# -------------------------------
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+
+# This is for development (your local static files)
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+# This is required for collectstatic in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # <-- new
+
+# Media files (uploads, profile photos, etc.)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 # -------------------------------
 # Cloudinary Storage
 # -------------------------------

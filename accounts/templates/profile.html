@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h2>Profile</h2>
+<div>
+    <p>Name: <span id="profileName"></span></p>
+    <p>Email: <span id="profileEmail"></span></p>
+</div>
+
+<h3>Update Profile</h3>
+<form id="updateProfileForm">
+    <input type="text" id="profileFirstName" placeholder="First Name">
+    <input type="text" id="profileLastName" placeholder="Last Name">
+    <input type="text" id="profilePhone" placeholder="Phone">
+    <input type="text" id="profileState" placeholder="State">
+    <input type="text" id="profileCity" placeholder="City">
+    <input type="text" id="profileStreetAddress" placeholder="Street Address">
+    <input type="text" id="profileZipCode" placeholder="ZIP Code">
+    <input type="date" id="profileDOB" placeholder="Date of Birth">
+    <input type="text" id="profileCountry" placeholder="Country">
+    <button type="submit">Update Profile</button>
+</form>
+<p id="updateProfileMsg"></p>
+
+<h3>Upload Profile Photo</h3>
+<form id="uploadPhotoForm" enctype="multipart/form-data">
+    <input type="file" id="profilePhoto" accept="image/*">
+    <button type="submit">Upload Photo</button>
+</form>
+<p id="profilePhotoMsg"></p>
+{% endblock %}

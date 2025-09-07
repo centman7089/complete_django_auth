@@ -6,9 +6,14 @@ from drf_spectacular.utils import extend_schema, OpenApiResponse
 from cloudinary.uploader import destroy
 from rest_framework.parsers import MultiPartParser, FormParser
 
+
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
+
+
 from .models import User
 from .serializers import (
-    GetProfileSerializer,  RegisterSerializer,
+    GetProfileSerializer, LogoutSerializer,  RegisterSerializer,
     ResendPasswordResetOTPSerializer, ResendVerificationOTPSerializer,
      UpdateProfilePhotoSerializer,
     UserDetailSerializerWithDetails, UserSerializer, VerifyEmailSerializer,
@@ -62,6 +67,30 @@ class LoginAPIView(generics.GenericAPIView):
             'tokens': tokens,
             'user': UserSerializer(user).data
         }, status=status.HTTP_200_OK)
+        
+
+
+@extend_schema(
+    summary="Logiout User and destroy jwt",
+    request=LoginSerializer,
+    responses={200: UserSerializer}
+)
+class LogoutAPIView(generics.GenericAPIView):
+    serializer_class = LogoutSerializer
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        refresh_token = serializer.validated_data["refresh"]
+        try:
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response({"detail": "Logged out successfully."}, status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 # ------------------------ OTP Endpoints ------------------------ #

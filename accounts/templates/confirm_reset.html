@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Confirm Reset{% endblock %}
+{% block content %}
+<div class="form-container">
+    <h2>Confirm Password Reset</h2>
+    <form id="confirmResetForm">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="code" placeholder="OTP Code" required>
+        <input type="password" name="new_password" placeholder="New Password" required>
+        <button type="submit">Reset Password</button>
+    </form>
+    <div id="confirmResetMessage"></div>
+</div>
+{% endblock %}
