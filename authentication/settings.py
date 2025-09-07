@@ -203,8 +203,12 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "API documentation for my authentication system",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
-    "SERVERS": [{"url": "http://localhost:8000", "description": "Local Dev"}],
+    "SERVERS": [
+        {"url": "http://localhost:8000", "description": "Local Dev"},
+        {"url": "https://api-test-291i.onrender.com", "description": "Production on Render"},
+    ],
 }
+
 
 # -------------------------------
 # Default primary key
