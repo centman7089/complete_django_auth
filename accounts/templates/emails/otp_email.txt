@@ -1,0 +1,7 @@
+Hello {{ user.first_name|default:"User" }},
+
+Your {{ purpose }} code is: {{ code }}
+
+This code will expire in {{ expires_in }} minutes.
+
+If you did not request this, please ignore this email.
